@@ -9,74 +9,39 @@ Create and activate a virtualenv
 ``` console
 $ python3 -m venv jupytermp
 $ source jupytermp/bin/activate
+(jupytermp) $
 ```
 
 Install this package using pip
 
 ``` console
-$ pip install https://github.com/dwighthubbard/jupyter_micropython_kernel/zipball/master
+(jupytermp) $ pip install https://github.com/dwighthubbard/jupyter_micropython_kernel/zipball/master
+...
+Installing collected packages: wcwidth, six, prompt-toolkit, pyzmq, decorator, ipython-genutils, traitlets, jupyter-core, python-dateutil, tornado, jupyter-client, ptyprocess, pexpect, pickleshare, simplegeneric, backcall, parso, jedi, pygments, ipython, ipykernel, jupyter-console, jsonschema, nbformat, pandocfilters, entrypoints, testpath, webencodings, html5lib, bleach, mistune, MarkupSafe, jinja2, nbconvert, terminado, Send2Trash, notebook, qtconsole, widgetsnbextension, ipywidgets, jupyter, pyserial, jupyter-micropython-kernel
+  Running setup.py install for tornado ... done
+  Running setup.py install for simplegeneric ... done
+  Running setup.py install for backcall ... done
+  Running setup.py install for pandocfilters ... done
+  Running setup.py install for MarkupSafe ... done
+  Running setup.py install for jupyter-micropython-kernel ... done
+Successfully installed MarkupSafe-1.0 Send2Trash-1.5.0 backcall-0.1.0 bleach-2.1.3 decorator-4.3.0 entrypoints-0.2.3 html5lib-1.0.1 ipykernel-4.8.2 ipython-6.4.0 ipython-genutils-0.2.0 ipywidgets-7.2.1 jedi-0.12.0 jinja2-2.10 jsonschema-2.6.0 jupyter-1.0.0 jupyter-client-5.2.3 jupyter-console-5.2.0 jupyter-core-4.4.0 jupyter-micropython-kernel-0.1.1 mistune-0.8.3 nbconvert-5.3.1 nbformat-4.4.0 notebook-5.5.0 pandocfilters-1.4.2 parso-0.2.1 pexpect-4.6.0 pickleshare-0.7.4 prompt-toolkit-1.0.15 ptyprocess-0.5.2 pygments-2.2.0 pyserial-3.4 python-dateutil-2.7.3 pyzmq-17.0.0 qtconsole-4.3.1 simplegeneric-0.8.1 six-1.11.0 terminado-0.8.1 testpath-0.3.1 tornado-5.0.2 traitlets-4.3.2 wcwidth-0.1.7 webencodings-0.5.1 widgetsnbextension-3.2.1
+(jupytermp) $
 ```
 
 Install the jupyter kernel
 
 ``` console
-(mpnotebook) dhubbard@littlepython:~/git/jupyter_micropython_kernel$ python -m jupyter_micropython_kernel.install
+(jupytermp) $ python -m jupyter_micropython_kernel.install
 DEBUG:__main__:Putting kernel in virtualenv share directory '/tmp/mpnotebook/share/jupyter'
 INFO:__main__:Writing jupyter kernel to '/tmp/mpnotebook/share/jupyter/kernels/micropython/kernel.json'
-$
+(jupytermp) $
 ```
-First install Jupyter: http://jupyter.org/install.html
 
-Then clone this repository and install the setup.py (assuming python 3.0, be
-sure to use the same version of python as Jupyter is installed with):
+Now run Jupyter notebook:
 
-    python3 setup.py install
-
-On Mac OSX and some Linux flavors you might need to run as root with sudo for
-the above command.  Make sure the installation completes successfully and that
-you do not see any error messages.
-
-Finally create a Jupyter kernel specification for the serial port and baud rate
-of your MicroPython board.  Unfortunately there is no UI or ability to pick the
-serial port/baud from the notebook so you'll have to bake this in to a kernel
-configuration.
-
-From the Jupyter kernel docs find your user specific Jupyter kernel spec location: http://jupyter-client.readthedocs.io/en/latest/kernels.html#kernel-specs  You want the **user** location:
-
-*   Windows: %APPDATA%\jupyter\kernels (note if you aren't sure where this is located see: http://www.pcworld.com/article/2690709/windows/whats-in-the-hidden-windows-appdata-folder-and-how-to-find-it-if-you-need-it.html)
-*   macOS: ~/Library/Jupyter/kernels
-*   Linux: ~/.local/share/jupyter/kernels
-
-Create the above kernels folder if it doesn't already exist. Then inside the
-kernels folder create a new folder called 'micropython' and copy the included
-kernel.json file inside it.
-
-Open the copied kernel.json file and edit it so the 4th line:
-
-    "/dev/tty.SLAB_USBtoUART", "115200",
-
-Is the serial name and baud rate of your MicroPython board.  For example if using COM4 and 115200 baud you would change it to:
-
-    "COM4", "115200",
-
-Also change the display name of the kernel on line 6:
-
-    "display_name": "MicroPython - /dev/tty.SLAB_USBtoUART",
-
-Set a value that describes your board, like:
-
-    "display_name": "MicroPython - COM4",
-
-This is the name you will see in Jupyter's notebook UI when picking the kernel
-to start.  You don't need to change any other config in the kernel.json.  Be
-very careful to make sure all the commands, double quotes, etc. are present
-(this needs to be a valid JSON formatted file).
-
-At this point you should have the following file: (Jupyter kernel spec location above)/micropython/kernel.json
-
-Now run Jupyter notebooks:
-
-    jupyter notebook
+``` console
+(jupytermp) $ jupyter notebook
+```
 
 In the notebook click the New button in the upper right, you should see your
 MicroPython kernel display name listed.  Click it to create a notebook using
