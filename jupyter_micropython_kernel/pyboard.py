@@ -38,7 +38,7 @@ Or:
     python pyboard.py test.py
 
 """
-
+import glob
 import sys
 import time
 

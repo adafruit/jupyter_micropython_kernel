@@ -4,6 +4,27 @@ Jupyter kernel to interact with a MicroPython or CircuitPython board over its se
 
 ## Installation
 
+Create and activate a virtualenv
+
+``` console
+$ python3 -m venv jupytermp
+$ source jupytermp/bin/activate
+```
+
+Install this package using pip
+
+``` console
+$ pip install https://github.com/dwighthubbard/jupyter_micropython_kernel/zipball/master
+```
+
+Install the jupyter kernel
+
+``` console
+(mpnotebook) dhubbard@littlepython:~/git/jupyter_micropython_kernel$ python -m jupyter_micropython_kernel.install
+DEBUG:__main__:Putting kernel in virtualenv share directory '/tmp/mpnotebook/share/jupyter'
+INFO:__main__:Writing jupyter kernel to '/tmp/mpnotebook/share/jupyter/kernels/micropython/kernel.json'
+$
+```
 First install Jupyter: http://jupyter.org/install.html
 
 Then clone this repository and install the setup.py (assuming python 3.0, be
