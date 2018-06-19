@@ -15,7 +15,7 @@ $ source jupytermp/bin/activate
 Install this package using pip
 
 ``` console
-(jupytermp) $ pip install https://github.com/dwighthubbard/jupyter_micropython_kernel/zipball/master
+(jupytermp) $ pip install https://github.com/adafruit/jupyter_micropython_kernel/zipball/master
 ...
 Installing collected packages: wcwidth, six, prompt-toolkit, pyzmq, decorator, ipython-genutils, traitlets, jupyter-core, python-dateutil, tornado, jupyter-client, ptyprocess, pexpect, pickleshare, simplegeneric, backcall, parso, jedi, pygments, ipython, ipykernel, jupyter-console, jsonschema, nbformat, pandocfilters, entrypoints, testpath, webencodings, html5lib, bleach, mistune, MarkupSafe, jinja2, nbconvert, terminado, Send2Trash, notebook, qtconsole, widgetsnbextension, ipywidgets, jupyter, pyserial, jupyter-micropython-kernel
   Running setup.py install for tornado ... done
