@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='jupyter_micropython_kernel',
-      version='0.1.1',
+      version='0.1.2',
       description='External MicroPython kernel for Jupyter notebooks.',
       author='Tony DiCola',
       author_email='tdicola@adafruit.com',

@@ -19,6 +19,7 @@ kernel_config = {
 }
 
 
+
 def jupyter_data_directories():
     jupyter_command = os.path.join(os.path.dirname(sys.executable), 'jupyter')
     directories = []
