@@ -1,7 +1,10 @@
 import logging
 
 from ipykernel.kernelbase import Kernel
+import glob
+import platform
 import pkg_resources
+import serial.tools.list_ports
 
 from jupyter_micropython_kernel.pyboard import Pyboard
 
@@ -21,6 +24,20 @@ def make_micropython_kernel(port, baud):
     # and call its constructor to control how it's built).  As a workaround
     # we'll just build a separate kernel class with a class-specific port and
     # baud rate baked in.
+    DEVICEPATH=['/dev/ttyUSB[0-9]', '/dev/ttyACM[0-9]', '/dev/tty.SLAB_USBtoUART', '/dev/cu.wchusbserial']
+
+    if not port or port == 'search':
+        logger.info('Searching for serial port')
+        if platform.system() in ['Windows']:
+            port = serial.tools.list_ports.comports()[0].device
+        else:
+            for pattern in DEVICEPATH:
+                tty_files = glob.glob(pattern)
+                if tty_files:
+                    logger.info('Found serial port %s', tty_files[0])
+                    port = tty_files[0]
+                    break
+
     class MicroPythonKernel(Kernel):
         implementation = 'micropython'
         implementation_version = version
