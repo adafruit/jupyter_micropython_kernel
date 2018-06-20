@@ -29,7 +29,7 @@ def make_micropython_kernel(port, baud):
     if not port or port == 'search':
         logger.info('Searching for serial port')
         if platform.system() in ['Windows']:
-            port = serial.tools.list_ports.comports()[0]
+            port = serial.tools.list_ports.comports()[0].device
         else:
             for pattern in DEVICEPATH:
                 tty_files = glob.glob(pattern)

@@ -15,7 +15,7 @@ $ source jupytermp/bin/activate
 If running windows, the commmand would be
 
 ``` console
-c:\Temp> python3 -m venv jupytermp
+c:\Temp> python -m venv jupytermp
 c:\Temp> myenv\Scripts\activate jupytermp\activate
 (myenv) C:\Temp>
 ```
